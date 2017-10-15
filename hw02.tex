@@ -1,0 +1,172 @@
+\documentclass[11pt]{article}
+\input{headers02}
+
+\usepackage{fancyhdr}   
+\pagestyle{fancy}      
+\lhead{}               
+\rhead{Harris Christiansen (christih@purdue.edu)} %%% <-- YOUR NAME HERE
+
+\usepackage[strict]{changepage}  
+\newcommand{\nextoddpage}{\checkoddpage\ifoddpage{\ \newpage\ \newpage}\else{\ \newpage}\fi}  
+
+
+\begin{document}
+
+\title{Homework 2}
+
+\date{}
+
+\maketitle 
+
+\thispagestyle{fancy}  
+\pagestyle{fancy}      
+
+
+
+
+\begin{enumerate}
+
+%%% Problem 1 
+\item {\bfseries Defining Multiplication over $\bbZ_{27}^*$.} 
+  In the class, we had considered the group $(\bbZ_{26},+)$ to construct a one-time pad for one alphabet messages. 
+  A few students were interested to define a group with 26 elements using a ``multiplication''-like operation. 
+  This problem will assist you to define the $(\bbZ_{27}^*,\times)$ group. 
+  
+  Interpret $\bbZ_{27}^*$ as the set of all triplets $(a_0,a_1,a_2)$ such that $a_0,a_1,a_2 \in \bbZ_3$ and at least one of them is non-zero (you can think of the triplets as the ternary representation of the elements in $\bbZ_{27}^*$). 
+  We shall equivalently interpret the element $(a_0,a_1,a_2)$ as the polynomial $a_0 + a_1X + a_2X^2$. 
+  So, every element in $\bbZ_{27}^*$ has an associated non-zero polynomial of degree at most 2, and every non-zero polynomial of degree at most 2 has an element in $\bbZ_{27}^*$ associated with it. 
+  
+  The multiplication ($\times$ operator) of the element $(a_0,a_1,a_2)$ with the element $(b_0,b_1,b_2)$ is defined as the element corresponding to the polynomial
+    $$(a_0 + a_1X + a_2X^2) \times (b_0 + b_1X + b_2X^2) \mod X^3 + 2 X + 2$$
+  According to this definition of the $\times$ operator, find
+  \begin{itemize}
+  \item (10 points) $(1,2,1) \times (2,2,1) $, and 
+  \item (15 points) the inverse of $(1,2,1)$. 
+  \end{itemize} 
+
+
+\nextoddpage 
+%%% Problem 2 
+\item {\bfseries One-time Pad for 3-Alphabet Words.} 
+  We interpret $a,b,\dotsc,z$ as $0,1,\dotsc,25$. 
+  We will work over the group $(\bbZ^3_{26},+)$, where $+$ is coordinate-wise integer-sum $\mod 26$. 
+  For example, $abx + acd = ada$. 
+  
+  Now, consider the one-time pad encryption scheme over the group $(\bbZ^3_{26},+)$. 
+  \begin{itemize}
+  \item (12.5 points) What is the probability that the encryption of the message $cat$ is the cipher text $cat$? 
+  \item (12.5 points) What is the probability that the encryption of the message $cat$ is the cipher text $dog$? 
+  \end{itemize}  
+  
+  
+\nextoddpage 
+%%% Problem 3 
+\item {\bfseries Left Identity and Left Inverse.} 
+  Recall that when we defined a group $(G,\circ)$, we stated that there exists an element $e$ such that for all $x\in G$ we have $x\circ e=x$. 
+  Note that $e$ is ``applied on $x$ from the right.'' 
+  
+  Similarly, for every $x\in G$, we are guaranteed that there exists $\inv(x)\in G$ such that $x\circ\inv(x)=e$. 
+  Note that $\inv(x)$ is again ``applied to $x$ from the right.'' 
+  
+  Intuitively, we shall explore the following questions: (a) Is there an ``identity from the left?,'' and (b) Is there an ``inverse from the left?'' 
+  
+  We shall formalize and prove these results in this question. 
+  \begin{itemize}
+  \item (10 points) Prove that $e\circ x = x$, for all $x\in G$. 
+  \item (10 points) Prove that if there exists an element $\alpha\in G$ such that for all $x\in G$ we have $\alpha\circ x=x$, then $\alpha = e$. 
+  \end{itemize}
+  Note that these two steps prove that the ``left identity'' is identical to the right identity $e$. 
+  
+  
+  \begin{itemize}
+  \item (10 points) Prove that $\inv(x)\circ x = e$. 
+  \item (10 points) Prove that if there exists an element $\alpha\in G$ and $x\in G$ such that $\alpha\circ x=e$, then $\alpha=\inv(x)$. 
+  \end{itemize}
+  Note that these two steps prove that the ``left inverse of $x$'' is identical to the left inverse $\inv(x)$. 
+  
+  Finally, we can prove the following result crucial to the proof of security of one-time pad over the group $(G,\circ)$. 
+  \begin{itemize}
+  \item (10 points) Suppose $m\in G $ is a message and $c\in G$ is a cipher text. 
+    Prove that there exists a unique $\sk\in G$ such that $m\circ \sk = c$. 
+  \end{itemize}  
+
+\nextoddpage 
+%%% Problem 4 
+\item {\bfseries One-time Pad with non-uniform secret key.} 
+  (25 points) Consider the one-time pad encryption scheme over a group $(G,+)$. 
+  Suppose the a priori distribution of messages is the uniform distribution over the set $G$. 
+  Suppose the generation algorithm samples the secret-key $\sk$ according to the distribution $\cD$ over the sample space $G$ such that $\cD$ is {\em not} the uniform distribution over $G$. 
+  Is this encryption scheme secure? 
+  
+  (\footnotesize{\em Remark:} 
+    To prove that the scheme is secure, provide a proof that the a priori distribution of messages is same as the a posteriori distribution. 
+    To prove that the scheme is insecure, provide a proof that the a priori distribution of messages is different from the a posteriori distribution.)
+    
+    
+    
+\nextoddpage 
+%%% Problem 5 
+\item {\bfseries Designing Encryption Scheme.} 
+  We shall work over the field $(\bbZ_{11},+,\times)$. 
+  Assume that there are ten people $\{1,2,\dotsc,10\}$. 
+  Design a private-key encryption scheme for the following scenario. 
+  
+  Alice meets the ten people $\{1,2,\dotsc,10\}$ today. 
+  She can provide each of them information $\{s_1,s_2,\dotsc,s_{10}\}$. 
+  
+  Tomorrow, Alice shall encrypt a message $m\in\bbZ_{11}$. 
+  The encryption has to ensure that decryption should be possible if and only if two people among $\{1,\dotsc,5\}$ and three people among $\{6,\dotsc,10\}$ get together.
+  
+  
+  \begin{itemize}
+  \item (15 points) Provide the $(\gen,\enc,\dec)$ algorithms. 
+  \item (15 points) Proof of security of this scheme. 
+  \end{itemize} 
+
+
+
+
+
+
+\nextoddpage 
+%%% Problem 6
+\item {\bfseries A property of 2-wise Independence.} 
+  Let \cH be a hash function family from the domain \cD to the range \cR. 
+  \begin{itemize}
+  \item (20 points) Similar to the proof in the lectures for universal hash function family, prove the following. 
+    There exists distinct $x_1^*,x_2^*\in\cD$ and $y_1^*,y_2^*\in\cR$ such that 
+      $$\probX{h(x^*_1)=y^*_1,h(x^*_2)=y^*_2\colon h\getsr\cH} \geq \frac1{\abs\cR^2}$$
+    ({\em Remark:} Note that this result does not depend on whether $\abs\cR < \abs\cD$ or not.) 
+  \item (25 points) Now, suppose that $\abs\cR < \abs\cD$. 
+    Suppose that for all distinct $x_1,x_2\in\cD$ the following holds.  
+    $$\probX{h(x_1)=h(x_2)\colon h\getsr\cH} < \frac1{\abs\cR}$$
+    Prove that there exists distinct $x_1^*,x_2^*\in\cD$ and $y_1^*,y_2^*\in\cR$ such that 
+      $$\probX{h(x^*_1)=y^*_1,h(x^*_2)=y^*_2\colon h\getsr\cH} > \frac1{\abs\cR^2}$$
+  \end{itemize}
+  This result proves that if a universal hash-function family has collision probability $<\frac1{\abs\cR}$ then it is not pairwise independent. 
+
+
+
+\nextoddpage 
+%%% Problem 7 
+\item {\bfseries Extra Credit.} 
+  Suppose $\cD=\zo^n$ and $\cR=\zo^{n-1}$. 
+  Construct a hash function family such that for all distinct $x_1,x_2\in\cD$ we have 
+  $$\probX{h(x_1)=h(x_2)\colon h\getsr\cH} = \frac1M \cdot\left(\frac{N-M}{N-1}\right),$$
+  where $N=2^n$ and $M=2^{n-1}$.  
+  Try to construct a hash function family such that each hash function can be efficiently evaluated. 
+ 
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\end{document}
