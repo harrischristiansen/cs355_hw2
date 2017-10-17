@@ -154,7 +154,8 @@
   
   {\bfseries Solution.} 
   \begin{itemize} 
-  \item Asdf
+  \item Because the distribution $\cD$ is not uniform, there exists a $\sk_p$ where $\probX{SK = \sk_p} > 1/\abs G$ n
+ 	Consider a message m ciphered with secret key $\sk_p$, such that $\sk_p = \inv(m) \circ c$. Because distribution $\cD$ is not uniform, it is clear that $\probX{M = m | C = c} > \probX{M = m}$ and thus that this non-uniform one-time pad is {\bfseries NOT} secure.
   \end{itemize}
     
     
@@ -181,7 +182,7 @@
   {\bfseries Solution.} 
   \begin{itemize} 
   \item We will use Shamir's secret sharing to divide the secret encryption key among the two groups of 5 people each. \\
-  gen: Generate secret key $\sk$ and use Shamir's secret sharing to divide $\sk$ into ($s_1$ and $s_2$) such that both shares are required. Key $s_1$ will then be divided among group 1 (individuals [1,2,3,4,5]) such that any 2 shares can unlock $s_1$. Key $s_2$ will be divided among group 2 (individuals [6,7,8,9,10]) such that any 3 shares can unlock $s_2$. \\
+  gen: Generate secret key $\sk$ and use Shamir's secret sharing to divide $\sk$ into ($s_1$ and $s_2$) such that both shares are required. Key $s_1$ will then be divided among group 1 (individuals [1,2,3,4,5]) using Shamir's such that any 2 shares can unlock $s_1$. Key $s_2$ will be divided among group 2 (individuals [6,7,8,9,10]) using Shamir's such that any 3 shares can unlock $s_2$. \\
   enc: Encrypt message m with secret key $\sk$ \\
   dec: Determine $s_1$ using 2 shares from group 1, and $s_2$ using 3 shares from group 2. Use $s_1$ and $s_2$ to determine $\sk$ and use $\sk$ to decrypt cipher c
   \item $\sk$ is needed to decrypt cipher c, and $\sk$ can only be determined by both shares $s_1$ and $s_2$. Because of Shamir's secret sharing scheme, without all shares, the cipher c is still guaranteed to be secure. Even if an attacker obtained ($s_1$ or $s_2$) and (all except 1 share for the other), the cipher would still be secure.
