@@ -37,13 +37,32 @@
   So, every element in $\bbZ_{27}^*$ has an associated non-zero polynomial of degree at most 2, and every non-zero polynomial of degree at most 2 has an element in $\bbZ_{27}^*$ associated with it. 
   
   The multiplication ($\times$ operator) of the element $(a_0,a_1,a_2)$ with the element $(b_0,b_1,b_2)$ is defined as the element corresponding to the polynomial
-    $$(a_0 + a_1X + a_2X^2) \times (b_0 + b_1X + b_2X^2) \mod X^3 + 2 X + 2$$
+    $$(a_0 + a_1X + a_2X^2) \times (b_0 + b_1X + b_2X^2) \mod X^3 + 2X + 2$$
   According to this definition of the $\times$ operator, find
   \begin{itemize}
-  \item (10 points) $(1,2,1) \times (2,2,1) $, and 
-  \item (15 points) the inverse of $(1,2,1)$. 
-  \end{itemize} 
-
+  \item (10 points) $(1,2,1) \times (2,2,1) $
+  \item (15 points) the inverse of $(1,2,1)$.
+  \end{itemize}
+  {\bfseries Solution.} 
+  \begin{itemize} 
+  \item $(1,2,1) \times (2,2,1) $
+   	\[(a_0 + a_1X + a_2X^2) \times (b_0 + b_1X + b_2X^2) \mod X^3 + 2X + 22\]
+ 	\[(1 + 2X + X^2) \times (2 + 2X + X^2) \mod X^3 + 2X + 2\]
+ 	\[2 + 4X +2X^2) + (2X + 4X^2 + 2X^3) + (X^2 + 2X^3 + X^4 \mod X^3 + 2X + 2\]
+ 	\[2 + 0X + X^2 + X^3 + X^4 \mod X^3 + 2X + 2\]
+ 	\[2 + 0X + X^2 - (2X+2) - (2X^2+2X) \mod X^3 + 2X + 2\]
+ 	\[0 + 2X + 2X^2 \mod X^3 + 2X + 2\]
+ 	\[(0, 2, 2)\]
+  \item the inverse of $(1,2,1)$. 
+ 	\[(1 + 2X + X^2) \times (b_0 + b_1X + b_2X^2) \mod X^3 + 2X + 2\]
+ 	\[(b_0 + b_1X + b_2X^2) + (2b_0X + 2b_1X^2 + 2b_2X^3) + (b_0X^2 + b_1X^3 + b_2X^4) \mod X^3 + 2X + 2\]
+ 	\[b_0 + (b_1+2b_0)X + (b_2+2b_1+b_0)X^2 + (2b_2+b_1)X^3 + b_2X^4 \mod X^3 + 2X + 2\]
+ 	\[b_0 + (b_1+2b_0)X + (b_2+2b_1+b_0)X^2 - (2b_2+b_1)(2X+2) - b_2(2X^2+2X) \mod X^3 + 2X + 2\]
+ 	\[b_0 + (b_1+2b_0)X + (b_2+2b_1+b_0)X^2 - (b_2+2b_1) - (b_2+2b_1)X - (2b_2)X - (2b_2)X^2 \mod X^3 + 2X + 2\]
+ 	\[(b_0+b_1+2b_2) + (2b_0+2b_1)X + (2b_2+2b_1+b_0)X^2 \mod X^3 + 2X + 2\]
+ 	\[(0, 0, 0) \textrm{ when } b_0 = 2, b_1 = 2, b_2 = 1\]
+ 	\[(1, 2, 2)\]
+  \end{itemize}
 
 \nextoddpage 
 %%% Problem 2 
@@ -54,8 +73,10 @@
   
   Now, consider the one-time pad encryption scheme over the group $(\bbZ^3_{26},+)$. 
   \begin{itemize}
-  \item (12.5 points) What is the probability that the encryption of the message $cat$ is the cipher text $cat$? 
+  \item (12.5 points) What is the probability that the encryption of the message $cat$ is the cipher text $cat$?
+  $$P(cipher="cat" given message="cat") = P(secretkey="aaa") = (1/26)^3 = 0.0000569$$
   \item (12.5 points) What is the probability that the encryption of the message $cat$ is the cipher text $dog$? 
+  $$P(cipher="dog" given message="cat") = P(secretkey="bon") = (1/26)^3 = 0.0000569$$
   \end{itemize}  
   
   
@@ -88,7 +109,36 @@
   \begin{itemize}
   \item (10 points) Suppose $m\in G $ is a message and $c\in G$ is a cipher text. 
     Prove that there exists a unique $\sk\in G$ such that $m\circ \sk = c$. 
-  \end{itemize}  
+  \end{itemize}
+  
+  {\bfseries Solution.} 
+  \begin{itemize} 
+  \item {\bfseries Prove that $e\circ x = x$, for all $x\in G$.} \\
+  Proof by contradiction. Suppose there exists $x$ such that $e \circ x \neq x$ \\
+  By performing the $\circ \inv(x)$ function on both sides, we get $e \circ (x \circ inv(x)) \neq x \circ inv(x) \equiv e \circ e \neq e \equiv e \neq e $ \\
+  Proof by contradiction, $e\circ x = x$
+  
+  \item {\bfseries Prove that if there exists an element $\alpha\in G$ such that for all $x\in G$ we have $\alpha\circ x=x$, then $\alpha = e$. } \\
+  Suppose there exists $\alpha$ such that $\alpha \circ x = x$ \\
+  Let $x = e$, such that $\alpha \circ e = e$ \
+  Given $\alpha \circ e = \alpha$, we can conclude $\alpha = e$
+  
+  \item {\bfseries Prove that $\inv(x)\circ x = e$. } \\
+  Given that $x \circ \inv(x) = e$ and  $x \circ e = x$ \\
+  Then $\inv(x) = \inv(x) \circ e = \inv(x) \circ (x \circ \inv(x)) = (\inv(x) \circ x) \circ \inv(x) $ \\
+  It follows that $e = \inv(x) \circ \inv(\inv(x)) = (\inv(x) \circ x) \circ \inv(x) \circ \inv(\inv(x)) = (\inv(x) \circ x) \circ e = \inv(x) \circ x$ \\
+  $\inv(x) \circ x = e$
+  
+  \item {\bfseries Prove that if there exists an element $\alpha\in G$ and $x\in G$ such that $\alpha\circ x=e$, then $\alpha=\inv(x)$. } \\
+  Suppose $\alpha \circ x = e$ \\
+  Then  $\alpha \circ x = e \equiv \alpha \circ x \circ \inv(x) = e \circ \inv(x) \equiv \alpha \circ e = e \circ \inv(x) \equiv \alpha = \inv(x)$
+  
+  \item {\bfseries Suppose $m\in G $ is a message and $c\in G$ is a cipher text. 
+    Prove that there exists a unique $\sk\in G$ such that $m\circ \sk = c$. } \\
+  Given $m,c\in G $, suppose $m\circ \sk = c$ \\
+  This would imply that $m\circ \sk \circ \inv(m) = c \circ \inv(m) \equiv \sk = c \circ \inv(m)$ \\
+  Therefor, there exists a $\sk\in G$ for every $m,c\in G $ where $\sk = c \circ \inv(m)$
+  \end{itemize}
 
 \nextoddpage 
 %%% Problem 4 
