@@ -213,7 +213,11 @@
   
   {\bfseries Solution.} 
   \begin{itemize} 
-  \item Asdf
+  \item Suppose $\abs\cD < \abs\cR$: It's clear that $\probX{h(x^*_1)=y^*_1\colon h\getsr\cH} > \frac1{\abs\cR}$ since not every range element is mapped to, and thus that $\probX{h(x^*_1)=y^*_1,h(x^*_2)=y^*_2\colon h\getsr\cH} \geq \frac1{\abs\cR^2}$ \\
+  Suppose $\abs\cR <= \abs\cD$: Since the range is smaller than the domain, lets assume every range element is mapped to. Then $\probX{h(x^*_1)=y^*_1\colon h\getsr\cH} \geq \frac1{\abs\cR}$ since each range element is probable, and thus $\probX{h(x^*_1)=y^*_1,h(x^*_2)=y^*_2\colon h\getsr\cH} \geq \frac1{\abs\cR^2}$
+  \item Given $\probX{h(x_1)=h(x_2)\colon h\getsr\cH} < \frac1{\abs\cR}$, if $y_1 = y_2$ then $\probX{h(x_1)=y_1,h(x_2)=y_2\colon h\getsr\cH} < \frac1{\abs\cR^2}$ \\
+  From part 1, we already know $\probX{h(x_1)=y_1,h(x_2)=y_2\colon h\getsr\cH} \geq \frac1{\abs\cR^2}$ \\
+  So, given the constraint $y_1 =\neq y_2$, we know there exists ($x_1, y_1, x_2, y_2$) such that $\probX{h(x_1)=y_1,h(x_2)=y_2\colon h\getsr\cH} > \frac1{\abs\cR^2}$
   \end{itemize}
 
 
@@ -229,7 +233,8 @@
   
   {\bfseries Solution.} 
   \begin{itemize} 
-  \item Asdf
+  \item $$\probX{h(x_1)=h(x_2)\colon h\getsr\cH} = \frac1M \cdot\left(\frac{N-M}{N-1}\right),$$
+  $$\frac1M \cdot\left(\frac{N-M}{N-1}\right) = \frac1{2^{n-1}} \cdot\left(\frac{2^n-2^{n-1}}{2^n-1}\right),$$
   \end{itemize}
  
 
